@@ -26,25 +26,38 @@
 
         .custom-cursor {
             position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ff0000;
-            border-radius: 50%;
+            width: 0;
+            height: 0;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.1s ease;
             transform: translate(-50%, -50%);
+            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(255, 0, 0, 0.5));
+            transition: transform 0.2s ease;
+        }
+
+        .custom-cursor::before {
+            content: '★';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: white;
+        }
+
+        .custom-cursor-glow {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
         }
 
         .custom-cursor-dot {
-            position: fixed;
-            width: 6px;
-            height: 6px;
-            background: #ff0000;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            transform: translate(-50%, -50%);
+            display: none;
         }
 
         a, button, .download-button, .music-control, .discord-button {
@@ -331,6 +344,7 @@
 </head>
 <body>
     <div class="custom-cursor"></div>
+    <div class="custom-cursor-glow"></div>
     <div class="custom-cursor-dot"></div>
     
     <audio id="bgMusic" loop>
@@ -404,13 +418,13 @@
     <script>
         // Custom cursor
         const cursor = document.querySelector('.custom-cursor');
-        const cursorDot = document.querySelector('.custom-cursor-dot');
+        const cursorGlow = document.querySelector('.custom-cursor-glow');
 
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
         });
 
         document.addEventListener('mousedown', () => {
