@@ -154,11 +154,18 @@
             transform-style: preserve-3d;
         }
 
+        .preview-image-container:hover .custom-cursor,
+        .preview-image-container:hover .custom-cursor-glow {
+            display: none;
+        }
+
         .preview-image {
             width: 100%;
             height: auto;
             border-radius: 4px;
             transition: filter 0.3s ease, box-shadow 0.3s ease;
+            cursor: none !important;
+            pointer-events: auto;
         }
 
         .preview-card:hover .preview-image {
@@ -421,6 +428,17 @@
         const cursorGlow = document.querySelector('.custom-cursor-glow');
 
         document.addEventListener('mousemove', (e) => {
+            const target = e.target;
+            
+            // Hide cursor on images
+            if (target.tagName === 'IMG') {
+                cursor.style.display = 'none';
+                cursorGlow.style.display = 'none';
+            } else {
+                cursor.style.display = 'block';
+                cursorGlow.style.display = 'block';
+            }
+            
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
             cursorGlow.style.left = e.clientX + 'px';
