@@ -123,8 +123,9 @@
         }
 
         .version-card {
-            background: #111111;
-            border: 1px solid #1a1a1a;
+            background: rgba(17, 17, 17, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             padding: 40px;
             text-align: center;
@@ -132,7 +133,8 @@
         }
 
         .version-card:hover {
-            border-color: #ff0000;
+            border-color: rgba(255, 0, 0, 0.6);
+            background: rgba(17, 17, 17, 0.6);
             transform: translateY(-4px);
         }
 
@@ -173,11 +175,21 @@
             padding: 8px 0;
             color: #cccccc;
             font-size: 14px;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .features-list li:last-child {
             border-bottom: none;
+        }
+
+        .features-list li::after {
+            content: '✓';
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
         }
 
         .download-button {
@@ -207,8 +219,9 @@
         .discord-section {
             text-align: center;
             padding: 40px;
-            background: #111111;
-            border: 1px solid #1a1a1a;
+            background: rgba(17, 17, 17, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
         }
 
