@@ -48,9 +48,10 @@
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            background: #ff0000;
+            background: rgba(255, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 0, 0, 0.3);
             color: white;
-            border: none;
             padding: 12px 20px;
             border-radius: 4px;
             cursor: pointer;
@@ -59,7 +60,8 @@
         }
 
         .music-control:hover {
-            background: #cc0000;
+            background: rgba(255, 0, 0, 0.8);
+            border-color: rgba(255, 0, 0, 0.5);
         }
 
         .container {
@@ -130,6 +132,27 @@
             padding: 40px;
             text-align: center;
             transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .virus-total-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #00ff00;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+
+        .virus-total-badge:hover {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: rgba(0, 255, 0, 0.5);
         }
 
         .version-card:hover {
@@ -276,7 +299,7 @@
         <source src="https://github.com/MasterSwebb/Sweb-Macro/raw/refs/heads/main/1%20Hour%20of%20Aggressive%20YoungBoy%20Music%20%5BL0x5gOYYhIw%5D%20(1).mp3" type="audio/mpeg">
     </audio>
 
-    <button class="music-control" id="musicToggle">🔊 Play Music</button>
+    <button class="music-control" id="musicToggle">Play Music</button>
 
     <canvas id="canvas"></canvas>
     <div class="spotlight" id="spotlight"></div>
@@ -297,6 +320,7 @@
 
         <div class="versions-section">
             <div class="version-card">
+                <a href="https://www.virustotal.com/gui/file/505a66f50f6467e14220215140e1e7ddbe8e015f9a08f5e6bd291175bb61cc0b" target="_blank" class="virus-total-badge">✓ 0/60 Virus Total</a>
                 <h2 class="version-title">V1</h2>
                 <span class="version-badge badge-available">Available</span>
                 
@@ -305,6 +329,7 @@
                     <li>Double Edit</li>
                     <li>Auto Pickup</li>
                     <li>Shotgun Pullout</li>
+                    <li>Undetected</li>
                 </ul>
 
                 <button class="download-button" onclick="handleDownload()">Download</button>
@@ -348,19 +373,19 @@
         // Try autoplay first
         music.play().then(() => {
             isPlaying = true;
-            musicToggle.textContent = '🔊 Music On';
+            musicToggle.textContent = 'Music On';
         }).catch(() => {
-            musicToggle.textContent = '🔇 Music Off';
+            musicToggle.textContent = 'Music Off';
         });
 
         musicToggle.addEventListener('click', () => {
             if (isPlaying) {
                 music.pause();
-                musicToggle.textContent = '🔇 Music Off';
+                musicToggle.textContent = 'Music Off';
                 isPlaying = false;
             } else {
                 music.play();
-                musicToggle.textContent = '🔊 Music On';
+                musicToggle.textContent = 'Music On';
                 isPlaying = true;
             }
         });
